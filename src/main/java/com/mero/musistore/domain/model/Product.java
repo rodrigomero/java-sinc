@@ -4,6 +4,7 @@ import com.mero.musistore.domain.model.dto.ProductDTO;
 import com.mero.musistore.domain.model.enums.CategoryEnum;
 import com.mero.musistore.domain.utils.UtilReflection;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,6 +38,7 @@ public class Product {
 
     private Integer stock;
 
+    @NotNull
     @Column(name = "is_visible")
     private Boolean isVisible;
 

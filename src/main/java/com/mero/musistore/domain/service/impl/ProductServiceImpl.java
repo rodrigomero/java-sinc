@@ -32,6 +32,7 @@ public class ProductServiceImpl implements ProductService {
         if (dto.getId() != null) {
             return updateProduct(dto);
         }
+        dto.setIsVisible(true);
         Product entity = dto.toEntity();
         repository.save(entity);
         dto.setId(entity.getId());
