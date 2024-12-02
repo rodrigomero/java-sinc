@@ -1,7 +1,6 @@
 package com.mero.musistore.domain.service.impl;
 
 import com.mero.musistore.domain.model.Product;
-import com.mero.musistore.domain.model.User;
 import com.mero.musistore.domain.model.dto.ProductDTO;
 import com.mero.musistore.domain.repository.ProductsRepository;
 import com.mero.musistore.domain.service.ProductService;
@@ -19,7 +18,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductDTO findProduct(Integer id) {
-        if(id == null) {
+        if (id == null) {
             //toDo implementar exception personalizada
             throw new RuntimeException("Id nulo");
         }
@@ -29,16 +28,28 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Integer saveProduct(ProductDTO dto) {
+    public ProductDTO saveProduct(ProductDTO dto) {
+        if (dto.getId() != null) {
+            return updateProduct(dto);
+        }
         Product entity = dto.toEntity();
         repository.save(entity);
+        dto.setId(entity.getId());
+        return dto;
+    }
 
-        return entity.getId();
+    private ProductDTO updateProduct(ProductDTO dto) {
+        Optional<Product> product = repository.findById(dto.getId());
+        if (product.isEmpty()) {
+            throw new RuntimeException("Product nao encontrado");
+        }
+        product.get().cloneFromDTO(dto);
+        repository.save(product.get());
+        return ProductDTO.toDTO(product.get());
     }
 
     @Override
     public List<ProductDTO> findAll() {
-        repository.findAll().stream().allMatch(product -> product.getId() != null);
         return repository.findAll().stream()
                 .map(ProductDTO::toDTO).toList();
     }

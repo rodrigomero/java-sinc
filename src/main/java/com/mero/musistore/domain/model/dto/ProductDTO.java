@@ -2,6 +2,7 @@ package com.mero.musistore.domain.model.dto;
 
 import com.mero.musistore.domain.model.Product;
 import com.mero.musistore.domain.model.enums.CategoryEnum;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,11 +18,13 @@ import java.math.BigDecimal;
 public class ProductDTO {
 
     private Integer id;
+    @NotBlank
     private String name;
     private String description;
     private CategoryEnum category;
     private BigDecimal price;
     private Integer stock;
+    private Boolean isVisible;
 
     public Product toEntity() {
         Product product = new Product();

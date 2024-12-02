@@ -1,5 +1,6 @@
 package com.mero.musistore.controller;
 
+import com.mero.musistore.domain.model.Product;
 import com.mero.musistore.domain.model.dto.ProductDTO;
 import com.mero.musistore.domain.service.ProductService;
 import jakarta.validation.Valid;
@@ -26,9 +27,7 @@ public class ProductController {
     }
 
     @PostMapping("/save")
-    public Integer saveProduct(@RequestBody @Valid ProductDTO dto) {
-
+    public ProductDTO saveProduct(@RequestBody @Valid ProductDTO dto) {
         return service.saveProduct(dto);
-
     }
 }

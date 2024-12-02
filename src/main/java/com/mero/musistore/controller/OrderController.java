@@ -1,5 +1,6 @@
 package com.mero.musistore.controller;
 
+import com.mero.musistore.domain.model.dto.CreateOrderDTO;
 import com.mero.musistore.domain.model.dto.OrderDTO;
 import com.mero.musistore.domain.service.OrderService;
 import jakarta.validation.Valid;
@@ -26,9 +27,12 @@ public class OrderController {
     }
 
     @PostMapping("/save")
-    public Integer saveOrder(@RequestBody @Valid OrderDTO dto) {
-
+    public OrderDTO saveOrder(@RequestBody @Valid CreateOrderDTO dto) {
         return service.saveOrder(dto);
+    }
 
+    @PostMapping("/update")
+    public OrderDTO updateOrder(@RequestBody @Valid OrderDTO dto) {
+        return service.updateOrder(dto);
     }
 }

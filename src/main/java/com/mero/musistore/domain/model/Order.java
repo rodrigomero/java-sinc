@@ -1,11 +1,14 @@
 package com.mero.musistore.domain.model;
 
+import com.mero.musistore.domain.model.dto.OrderDTO;
 import com.mero.musistore.domain.model.enums.StatusOrderEnum;
+import com.mero.musistore.domain.utils.UtilReflection;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.BeanUtils;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -43,4 +46,9 @@ public class Order {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User user;
+
+    public void cloneFromDTO(OrderDTO orderDTO) {
+        String[] ignoredProperties = UtilReflection.getIgnoredProperties(orderDTO);
+        BeanUtils.copyProperties(orderDTO, this,  ignoredProperties);
+    }
 }

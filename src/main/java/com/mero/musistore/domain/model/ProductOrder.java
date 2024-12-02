@@ -1,10 +1,14 @@
 package com.mero.musistore.domain.model;
 
+import com.mero.musistore.domain.model.dto.ProductDTO;
+import com.mero.musistore.domain.model.dto.ProductOrderDTO;
+import com.mero.musistore.domain.utils.UtilReflection;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.BeanUtils;
 
 import java.math.BigDecimal;
 
@@ -38,4 +42,9 @@ public class ProductOrder {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Product product;
+
+    public void cloneFromDTO(ProductOrderDTO productOrderDTO) {
+        String[] ignoredProperties = UtilReflection.getIgnoredProperties(productOrderDTO);
+        BeanUtils.copyProperties(productOrderDTO, this,  ignoredProperties);
+    }
 }

@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO findUser(Integer id) {
-        if(id == null) {
+        if (id == null) {
             //toDo implementar exception personalizada
             throw new RuntimeException("Id nulo");
         }
@@ -28,11 +28,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer saveUser(UserDTO dto) {
+    public UserDTO saveUser(UserDTO dto) {
+        if (dto.getId() != null) {
+            return updateUser(dto);
+        }
         User entity = dto.toEntity();
         repository.save(entity);
+        dto.setId(entity.getId());
+        return dto;
+    }
 
-        return entity.getId();
+    private UserDTO updateUser(UserDTO dto) {
+        Optional<User> user = repository.findById(dto.getId());
+        if (user.isEmpty()) {
+            throw new RuntimeException("Usuario nao encontrado");
+        }
+        user.get().cloneFromDTO(dto);
+
+        repository.save(user.get());
+        return UserDTO.toDTO(user.get());
     }
 
     @Override

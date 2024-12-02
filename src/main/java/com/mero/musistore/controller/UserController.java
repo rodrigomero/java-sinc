@@ -26,9 +26,8 @@ public class UserController {
     }
 
     @PostMapping("/save")
-    public Integer saveUser(@RequestBody @Valid UserDTO dto) {
+    public UserDTO saveUser(@RequestBody @Valid UserDTO dto) {
 
         return service.saveUser(dto);
-
     }
 }

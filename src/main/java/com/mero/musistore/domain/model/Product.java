@@ -1,11 +1,15 @@
 package com.mero.musistore.domain.model;
 
+import com.mero.musistore.domain.model.dto.ProductDTO;
+import com.mero.musistore.domain.model.dto.UserDTO;
 import com.mero.musistore.domain.model.enums.CategoryEnum;
+import com.mero.musistore.domain.utils.UtilReflection;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.BeanUtils;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -34,6 +38,14 @@ public class Product {
 
     private Integer stock;
 
+    @Column(name = "is_visible")
+    private Boolean isVisible;
+
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     private List<ProductOrder> productOrders;
+
+    public void cloneFromDTO(ProductDTO productDTO) {
+        String[] ignoredProperties = UtilReflection.getIgnoredProperties(productDTO);
+        BeanUtils.copyProperties(productDTO, this,  ignoredProperties);
+    }
 }
