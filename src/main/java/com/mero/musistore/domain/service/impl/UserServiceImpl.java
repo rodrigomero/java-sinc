@@ -67,8 +67,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Boolean login(LoginDTO dto) {
+    public UserDTO login(LoginDTO dto) {
         UserDTO user = findByUsername(dto.getUsername());
-        return user.getPassword().equals(dto.getPassword());
+
+        return user.getPassword().equals(dto.getPassword()) ? user : null;
     }
 }

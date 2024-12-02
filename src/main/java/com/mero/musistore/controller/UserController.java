@@ -8,10 +8,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/users")
+@CrossOrigin(origins = "*")
 public class UserController {
 
     private final UserService service;
@@ -32,9 +34,8 @@ public class UserController {
         return service.saveUser(dto);
     }
 
-    @CrossOrigin(origins = "*")
     @PostMapping("/login")
-    public Boolean loginUser(@RequestBody @Valid LoginDTO dto) {
+    public UserDTO loginUser(@RequestBody @Valid LoginDTO dto) {
         return service.login(dto);
     }
 }
