@@ -1,6 +1,7 @@
 package com.mero.musistore.domain.model.dto;
 
 import com.mero.musistore.domain.model.User;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

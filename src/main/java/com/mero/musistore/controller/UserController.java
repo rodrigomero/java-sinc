@@ -1,5 +1,6 @@
 package com.mero.musistore.controller;
 
+import com.mero.musistore.domain.model.dto.LoginDTO;
 import com.mero.musistore.domain.model.dto.UserDTO;
 import com.mero.musistore.domain.service.UserService;
 import jakarta.validation.Valid;
@@ -29,5 +30,11 @@ public class UserController {
     public UserDTO saveUser(@RequestBody @Valid UserDTO dto) {
 
         return service.saveUser(dto);
+    }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping("/login")
+    public Boolean loginUser(@RequestBody @Valid LoginDTO dto) {
+        return service.login(dto);
     }
 }

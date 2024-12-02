@@ -1,6 +1,7 @@
 package com.mero.musistore.domain.service.impl;
 
 import com.mero.musistore.domain.model.User;
+import com.mero.musistore.domain.model.dto.LoginDTO;
 import com.mero.musistore.domain.model.dto.UserDTO;
 import com.mero.musistore.domain.repository.UsersRepository;
 import com.mero.musistore.domain.service.UserService;
@@ -25,6 +26,15 @@ public class UserServiceImpl implements UserService {
         Optional<User> usuario = repository.findById(id);
 
         return usuario.map(UserDTO::toDTO).orElseThrow(() -> new RuntimeException("Usuario nao encontrado"));
+    }
+
+    @Override
+    public UserDTO findByUsername(String username) {
+        User user = repository.findByUsername(username);
+        if(user == null) {
+            throw new RuntimeException("Usuario nao encontrado");
+        }
+        return UserDTO.toDTO(user);
     }
 
     @Override
@@ -54,5 +64,11 @@ public class UserServiceImpl implements UserService {
         repository.findAll().stream().allMatch(user -> user.getId() != null);
         return repository.findAll().stream()
                 .map(UserDTO::toDTO).toList();
+    }
+
+    @Override
+    public Boolean login(LoginDTO dto) {
+        UserDTO user = findByUsername(dto.getUsername());
+        return user.getPassword().equals(dto.getPassword());
     }
 }
