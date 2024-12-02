@@ -1,11 +1,8 @@
 package com.mero.musistore.domain.service.impl;
 
-import com.mero.musistore.domain.model.Order;
-import com.mero.musistore.domain.model.Product;
 import com.mero.musistore.domain.model.ProductOrder;
-import com.mero.musistore.domain.model.dto.*;
-import com.mero.musistore.domain.model.enums.StatusOrderEnum;
-import com.mero.musistore.domain.repository.OrdersRepository;
+import com.mero.musistore.domain.model.dto.ProductDTO;
+import com.mero.musistore.domain.model.dto.ProductOrderDTO;
 import com.mero.musistore.domain.repository.ProductOrdersRepository;
 import com.mero.musistore.domain.service.ProductOrderService;
 import com.mero.musistore.domain.service.ProductService;
@@ -14,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,7 +50,7 @@ public class ProductOrderServiceImpl implements ProductOrderService {
     @Override
     public ProductOrderDTO updateProductOrder(ProductOrderDTO dto) {
         Optional<ProductOrder> productOrder = repository.findById(dto.getId());
-        if(productOrder.isEmpty()) {
+        if (productOrder.isEmpty()) {
             throw new RuntimeException("ProductOrder nao encontrado");
         }
         productOrder.get().cloneFromDTO(dto);

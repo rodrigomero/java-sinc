@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface UserService {
     UserDTO findUser(Integer id);
+
     UserDTO saveUser(UserDTO dto);
 
     List<UserDTO> findAll();

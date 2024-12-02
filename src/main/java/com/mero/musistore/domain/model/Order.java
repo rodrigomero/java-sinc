@@ -49,6 +49,6 @@ public class Order {
 
     public void cloneFromDTO(OrderDTO orderDTO) {
         String[] ignoredProperties = UtilReflection.getIgnoredProperties(orderDTO);
-        BeanUtils.copyProperties(orderDTO, this,  ignoredProperties);
+        BeanUtils.copyProperties(orderDTO, this, ignoredProperties);
     }
 }

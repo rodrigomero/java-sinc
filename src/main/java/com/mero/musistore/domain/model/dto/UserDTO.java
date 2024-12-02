@@ -2,7 +2,10 @@ package com.mero.musistore.domain.model.dto;
 
 import com.mero.musistore.domain.model.User;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
 @Getter

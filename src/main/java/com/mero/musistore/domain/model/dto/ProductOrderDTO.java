@@ -1,8 +1,6 @@
 package com.mero.musistore.domain.model.dto;
 
-import com.mero.musistore.domain.model.Order;
 import com.mero.musistore.domain.model.ProductOrder;
-import com.mero.musistore.domain.model.enums.StatusOrderEnum;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +9,6 @@ import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter

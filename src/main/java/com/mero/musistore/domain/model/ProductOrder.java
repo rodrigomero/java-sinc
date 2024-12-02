@@ -1,6 +1,5 @@
 package com.mero.musistore.domain.model;
 
-import com.mero.musistore.domain.model.dto.ProductDTO;
 import com.mero.musistore.domain.model.dto.ProductOrderDTO;
 import com.mero.musistore.domain.utils.UtilReflection;
 import jakarta.persistence.*;
@@ -45,6 +44,6 @@ public class ProductOrder {
 
     public void cloneFromDTO(ProductOrderDTO productOrderDTO) {
         String[] ignoredProperties = UtilReflection.getIgnoredProperties(productOrderDTO);
-        BeanUtils.copyProperties(productOrderDTO, this,  ignoredProperties);
+        BeanUtils.copyProperties(productOrderDTO, this, ignoredProperties);
     }
 }

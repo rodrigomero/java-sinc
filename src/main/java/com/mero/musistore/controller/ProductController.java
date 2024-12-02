@@ -1,6 +1,5 @@
 package com.mero.musistore.controller;
 
-import com.mero.musistore.domain.model.Product;
 import com.mero.musistore.domain.model.dto.ProductDTO;
 import com.mero.musistore.domain.service.ProductService;
 import jakarta.validation.Valid;

@@ -37,6 +37,6 @@ public class User {
 
     public void cloneFromDTO(UserDTO userDTO) {
         String[] ignoredProperties = UtilReflection.getIgnoredProperties(userDTO);
-        BeanUtils.copyProperties(userDTO, this,  ignoredProperties);
+        BeanUtils.copyProperties(userDTO, this, ignoredProperties);
     }
 }
