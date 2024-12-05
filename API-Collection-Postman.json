@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"rodrigo\",\r\n    \"email\": \"meroo.rodrigo@gmail.com\",\r\n    \"password\": \"123\",\r\n    \"isAdmin\": true\r\n}",
+							"raw": "{\r\n    \"username\": \"roddrddidgdo\",\r\n    \"email\": \"meroo.rodrigo@gmail.com\",\r\n    \"password\": \"123\",\r\n    \"isAdmin\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -267,7 +267,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Baixo\",\r\n    \"description\": \"Descricao\",\r\n    \"category\": 2,\r\n    \"price\": 10,\r\n    \"stock\": 10,\r\n    \"isVisible\": true\r\n}",
+							"raw": "{\r\n    \"name\": \"Baixo\",\r\n    \"description\": \"Descricao\",\r\n    \"category\": 1,\r\n    \"price\": 10,\r\n    \"stock\": 10,\r\n    \"isVisible\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
